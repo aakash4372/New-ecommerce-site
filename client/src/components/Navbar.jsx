@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Drawer, IconButton, List, ListItem, ListItemText, Badge, Menu, MenuItem } from "@mui/material";
-import { Menu as MenuIcon, ShoppingCart, User, Mail, Phone, X } from "lucide-react";
+import { Menu as MenuIcon, ShoppingCart, User, Mail, Phone, X, Heart } from "lucide-react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -33,48 +33,23 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <IconButton onClick={handleUserClick} aria-label="User menu">
-            <User color="black" />
-          </IconButton>
-          <Menu
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={handleUserClose}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "right",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            PaperProps={{
-              sx: { minWidth: 120 },
-            }}
-          >
-            <MenuItem
-              onClick={handleUserClose}
-              sx={{
-                "&:hover": { backgroundColor: "black", color: "white" },
-              }}
-            >
-              Sign Up
-            </MenuItem>
-            <MenuItem
-              onClick={handleUserClose}
-              sx={{
-                "&:hover": { backgroundColor: "black", color: "white" },
-              }}
-            >
-              Sign In
-            </MenuItem>
-          </Menu>
-          <IconButton aria-label="Shopping cart">
-            <Badge badgeContent={cartItemsCount} color="error" overlap="circular">
-              <ShoppingCart color="black" />
-            </Badge>
-          </IconButton>
-        </div>
+  <IconButton onClick={handleUserClick} aria-label="User menu">
+    <User color="black" />
+  </IconButton>
+
+  <IconButton aria-label="Wishlist">
+    <Badge badgeContent={0} color="error" overlap="circular">
+      <Heart color="black" />
+    </Badge>
+  </IconButton>
+
+  <IconButton aria-label="Shopping cart">
+    <Badge badgeContent={cartItemsCount} color="error" overlap="circular">
+      <ShoppingCart color="black" />
+    </Badge>
+  </IconButton>
+</div>
+
 
         <Drawer
           anchor="left"
